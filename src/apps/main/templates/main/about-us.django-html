@@ -1,7 +1,32 @@
 {% extends 'base.django-html' %}
 
+{% load static %}
+
 {% block content %}
 
-About us
+{% include 'components/breadcrumb.django-html' %}
+
+<div class="about-section pd-top-80">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-5 offset-lg-2">
+                <div class="thumb about-section-right-thumb">
+                    <img src="{% static '' %}/img/others/image.png" alt="img">
+                    <img class="about-absolute-thumb" src="{% static '' %}/img/others/image-2.png" alt="img">
+                </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+                <div class="section-title mb-lg-0">
+                    <h2 class="title">Lets Go Travel <br> with Us</h2>
+                    <p>Donec dapibus mauris id odio ornare tempus. Duis sit amet accumsan justo, quis tempor ligula. Quisque quis pharetra felis. Ut quis consequat orci, at consequat felis. Suspendisse auctor laoreet placerat. Nam et risus non lacus dignissim lacinia sit amet nec eros. Nulla vel urna quis libero pharetra varius. Nulla tellus nunc, malesuada at scelerisque eget, cursus at eros. Maecenas pellentesque lacus quis erat eleifend sagittis. Sed vel maximus ante, quis mattis neque. Nullam dapibus erat sed nulla cursus accumsan. Nulla volutpat libero lacinia venenatis sodales. Ut in pellentesque.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% include 'components/video.django-html' %}
+
+{% include 'components/cta.django-html' %}
 
 {% endblock %}

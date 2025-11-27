@@ -6,7 +6,7 @@
 
 {% include './categories.django-html' %}
 
-{% include './about-us.django-html' %}
+{% include 'components/video.django-html' %}
 
 {% include './excursions.django-html' %}
 
