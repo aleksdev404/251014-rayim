@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 
 
 def upload_to(instance, filename):
@@ -43,6 +44,7 @@ class SiteSettings(models.Model):
 
 class Excursion(models.Model):
     title = models.CharField("Название", max_length=200)
+    slug = models.SlugField(unique=True, null=False)
     cover = models.ImageField("Изображение (обложка)", upload_to=upload_to, blank=True, null=True)  # noqa
     short_description = models.TextField("Короткое описание", blank=True)
     content_md = models.TextField("Контент (Markdown, без изображений)", blank=True)  # noqa
@@ -58,6 +60,9 @@ class Excursion(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('main:excursion-detail', kwargs={'slug': self.slug})
 
 
 class ExcursionImage(models.Model):
