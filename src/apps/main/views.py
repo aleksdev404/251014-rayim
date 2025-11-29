@@ -1,15 +1,17 @@
-from django.views.generic import TemplateView
+from django.views import generic
+
+from . import models
 
 
-class HomeView(TemplateView):
+class HomeView(generic.TemplateView):
     template_name = 'main/home/index.django-html'
 
 
-class AboutUsView(TemplateView):
+class AboutUsView(generic.TemplateView):
     template_name = 'main/about-us.django-html'
 
 
-class ContactUsView(TemplateView):
+class ContactUsView(generic.TemplateView):
     template_name = 'main/contact-us.django-html'
 
 
@@ -19,5 +21,11 @@ class ExcursionListView(generic.ListView):
     ordering = ('created_at')
 
 
-class ExcursionDetailView(TemplateView):
+class ExcursionDetailView(generic.DetailView):
+    model = models.Excursion
     template_name = 'main/excursion-detail.django-html'
+    slug_field = 'slug'      # по какому полю искать
+    slug_url_kwarg = 'slug'  # имя параметра в urls
+
+    def get_queryset(self):
+        return models.Excursion.objects.filter(is_published=True)
