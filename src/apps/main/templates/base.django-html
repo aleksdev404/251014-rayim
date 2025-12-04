@@ -25,6 +25,7 @@
     {% endblock %}
 
     {% include 'components/footer.django-html' %}
+    {% include 'components/wa-button.django-html' %}
 
     {% include 'scripts.django-html' %}
 </body>

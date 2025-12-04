@@ -1,4 +1,3 @@
-from django.core.files.base import ContentFile
 from django.core.files.uploadedfile import InMemoryUploadedFile
 from django.db import models
 from django.urls import reverse
