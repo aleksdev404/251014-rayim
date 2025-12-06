@@ -17,7 +17,7 @@
             <div class="col-xl-5 col-lg-6 offset-xl-1 wow animated fadeInLeft" data-wow-duration="1s" data-wow-delay="0.3s">
                 <div class="video-popup-wrap">
                     <div class="thumb">
-                        <img src="{% static '' %}/img/video.png" alt="video">
+                        <img src="{% static '' %}/img/others/about-us.jpg" alt="video">
                     </div>
                 </div>
             </div>

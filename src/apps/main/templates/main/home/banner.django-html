@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="main-banner-area jarallax" style="background-image: url({% static '' %}/img/banner/2.jpg);">
+<div class="main-banner-area jarallax" style="background-image: url({% static '' %}/img/banner/hero-5.jpeg);">
     <div class="content">
         <div class="container">
             <h2>РУССКОГОВОРЯЩИЙ ГИД в СТАМБУЛЕ</h2>
