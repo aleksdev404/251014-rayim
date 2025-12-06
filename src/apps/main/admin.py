@@ -8,7 +8,14 @@ from . import models
 class SiteSettingsAdmin(admin.ModelAdmin):
     fieldsets = (
         ("Брендинг", {"fields": ("logo", "logo_preview", "slogan", "copyright_text", "tursab_image", "tursab_preview")}),  # noqa
-        ("Контакты", {"fields": ("address", "email", "phone", "whatsapp")}),
+        ("Контакты", {"fields": (
+            "address",
+            "email",
+            "phone",
+            "phone_repr",
+            "whatsapp",
+            "whatsapp_repr"
+        )}),
     )
     readonly_fields = ("logo_preview", "tursab_preview")
     list_display = ("__str__", "email", "phone", "whatsapp")

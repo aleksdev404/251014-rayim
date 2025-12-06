@@ -80,8 +80,29 @@ class SiteSettings(models.Model):
 
     address = models.CharField("Адрес", max_length=255, blank=True)
     email = models.EmailField("Почта", blank=True)
-    phone = models.CharField("Номер телефона", max_length=50, blank=True)
-    whatsapp = models.CharField("WhatsApp", max_length=50, blank=True)
+
+    phone = models.CharField(
+        "Номер телефона",
+        max_length=50,
+        blank=True,
+        help_text='Формат должен быть +xxxxxxxxxxxx'
+    )
+    phone_repr = models.CharField(
+        "Номер телефона (строка)",
+        max_length=50,
+        blank=True,
+    )
+    whatsapp = models.CharField(
+        "WhatsApp",
+        max_length=50,
+        blank=True,
+        help_text='Формат должен быть +xxxxxxxxxxxx'
+    )
+    whatsapp_repr = models.CharField(
+        "WhatsApp (строка)",
+        max_length=50,
+        blank=True
+    )
 
     class Meta:
         verbose_name = "Настройки сайта"

@@ -1,5 +1,8 @@
+{% load utils %}
+{% get_site_settings as site_settings %}
+
 <a
-    href="https://wa.me/{{ whatsapp_phone|default:'+79990000000' }}"
+    href="https://wa.me/{{ site_settings.whatsapp|default:'+79990000000' }}"
     class="whatsapp-float-btn"
     target="_blank"
     rel="noopener noreferrer"

@@ -1,5 +1,7 @@
 {% load static %}
 {% load markdownify %}
+{% load utils %}
+{% get_site_settings as site_settings %}
 
 <div class="container mt-5">
     <div class="row align-items-stretch" style="row-gap: 3rem;">
@@ -10,10 +12,34 @@
         </div>
         <div class="col-lg-3">
             <div class="position-sticky" style="top: 100px">
-                <a class="btn btn-yellow w-100 mb-2" href="#">🛒 Записаться</a>
-                <a class="btn btn-primary w-100 mb-2" href="#">🤔 Задать вопросы</a>
-                <a class="btn btn-success w-100 mb-2" href="#">💬 Написать отзыв</a>
-                <a class="btn btn-danger w-100 mb-2" href="#">📢 Пожаловаться</a>
+                {% with msg='Здравствуйте! Я хочу записаться на экскурсию "'|add:object.title|add:'".' %}
+                <a
+                    href="https://wa.me/{{ site_settings.whatsapp }}?text={{ msg|urlencode }}""
+                    class="btn btn-yellow w-100 mb-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Написать в WhatsApp"
+                >🛒 Записаться</a>
+                {% endwith %}
+                {% with msg='Здравствуйте! Я хочу задать вопросы по поводу экскурсии "'|add:object.title|add:'".' %}
+                <a
+                    href="https://wa.me/{{ site_settings.whatsapp }}?text={{ msg|urlencode }}""
+                    class="btn btn-primary w-100 mb-2"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Написать в WhatsApp"
+                >🤔 Задать вопросы</a>
+                {% endwith %}
+                {% with msg='Здравствуйте! Я хочу написать отзыв на экскурсию "'|add:object.title|add:'".' %}
+                <a
+                    href="https://wa.me/{{ site_settings.whatsapp }}?text={{ msg|urlencode }}""
+                    class="btn btn-success w-100 mb-2">💬 Написать отзыв</a>
+                {% endwith %}
+                {% with msg='Здравствуйте! Я хочу пожаловаться на экскурсию "'|add:object.title|add:'".' %}                
+                <a
+                    href="https://wa.me/{{ site_settings.whatsapp }}?text={{ msg|urlencode }}""
+                    class="btn btn-danger w-100 mb-2">📢 Пожаловаться</a>
+                {% endwith %}
             </div>
         </div>
     </div>

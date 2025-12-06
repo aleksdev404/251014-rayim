@@ -1,4 +1,6 @@
 {% load static %}
+{% load utils %}
+{% get_site_settings as site_settings %}
 
 <div class="blog-area pd-top-120">
     <div class="container">
@@ -45,7 +47,13 @@
                                     <!-- <a class="tag" href="#">Europe</a>
                                     <p class="date">18 September 2019</p> -->
                                     <h4 class="title">Трансфер из аэропорта</h4>
-                                    <a class="btn btn-yellow" href="https://wa.me/905523705900?text=aaaa"><span>Заказать<i class="la la-arrow-right"></i></span></a>
+                                    <a
+                                        class="btn btn-yellow"
+                                        href="https://wa.me/{{ site_settings.whatsapp }}?text={{ 'Здравствуйте! Я бы хотел(а) заказать трансфер в/из аеропорта! '|urlencode }}"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        aria-label="Написать в WhatsApp"                  
+                                    ><span>Заказать<i class="la la-arrow-right"></i></span></a>
                                 </div>
                             </div>
                         </div>

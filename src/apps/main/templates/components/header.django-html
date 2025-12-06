@@ -1,5 +1,6 @@
 {% load static %}
 {% load utils %}
+{% get_site_settings as site_settings %}
 <nav class="navbar navbar-area navbar-expand-lg nav-style-01">
     <div class="container nav-container">
         <div class="responsive-mobile-menu">
@@ -19,7 +20,13 @@
             <div class="nav-right-content">
                 <ul class="pl-0">
                     <li class="top-bar-btn-booking">
-                        <a class="btn btn-yellow" href="https://wa.me/905523705900?text=aaaa">ЗАПИСАТЬСЯ <i class="fa fa-paper-plane"></i></a>
+                        <a
+                            class="btn btn-yellow"
+                            href="https://wa.me/{{site_settings.whatsapp}}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Написать в WhatsApp"                        
+                        >📞&nbsp;&nbsp;СВЯЗАТЬСЯ</a>
                     </li>
                 </ul>
             </div>
@@ -51,7 +58,13 @@
         <div class="nav-right-content">
             <ul>
                 <li>
-                    <a class="btn btn-yellow" href="https://wa.me/905523705900?text=aaaa">ЗАПИСАТЬСЯ <i class="fa fa-paper-plane"></i></a>
+                    <a
+                        class="btn btn-yellow"
+                        href="https://wa.me/{{site_settings.whatsapp}}"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Написать в WhatsApp"                    
+                    >📞&nbsp;&nbsp;СВЯЗАТЬСЯ</a>
                 </li>
             </ul>
         </div>

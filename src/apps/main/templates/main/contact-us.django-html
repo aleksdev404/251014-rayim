@@ -1,5 +1,9 @@
 {% extends 'base.django-html' %}
 
+{% load utils %}
+
+{% get_site_settings as site_settings %}
+
 {% block title %}Свяжитесь с нами{% endblock %}
 
 {% load static %}
@@ -18,11 +22,7 @@
                 <div class="contact-info bg-gray">
                     <p>
                         <i class="fa fa-map-marker"></i> 
-                        <span>Lavaca Street, Suite 2000 Austin, TX 24141</span>
-                    </p>
-                    <p>
-                        <i class="fa fa-clock-o"></i> 
-                        <span>Office Hour 9:00 to 7:00 Sunday 10:00 to 5:00</span>
+                        <span>{{ site_settings.address }}</span>
                     </p>
                     <p>
                         <i class="fa fa-envelope"></i> 
