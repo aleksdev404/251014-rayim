@@ -30,13 +30,19 @@ def upload_to(instance, filename):
 
 
 class ImageCompressionMixin:
-    image_field_name = "cover"   # имя поля по умолчанию
-    max_width = 1280
-    max_height = 1280
-    quality = 70
+    # базовые настройки по умолчанию
+    default_max_width = 1280
+    default_max_height = 1280
+    default_quality = 70
 
-    def compress_image(self):
-        field = getattr(self, self.image_field_name)
+    # формат:
+    # image_compression_config = {
+    #   "field_name": {"max_width": 123, "max_height": 123, "quality": 80}
+    # }
+    image_compression_config = {}
+
+    def _compress_image_field(self, field_name: str, config: dict):
+        field = getattr(self, field_name, None)
 
         if not field:
             return
@@ -46,10 +52,14 @@ class ImageCompressionMixin:
         if img.mode != "RGB":
             img = img.convert("RGB")
 
-        img.thumbnail((self.max_width, self.max_height))
+        max_width = config.get("max_width", self.default_max_width)
+        max_height = config.get("max_height", self.default_max_height)
+        quality = config.get("quality", self.default_quality)
+
+        img.thumbnail((max_width, max_height))
 
         img_io = BytesIO()
-        img.save(img_io, format="JPEG", quality=self.quality, optimize=True)
+        img.save(img_io, format="JPEG", quality=quality, optimize=True)
         img_io.seek(0)
 
         original_name = Path(field.name).stem
@@ -57,19 +67,23 @@ class ImageCompressionMixin:
 
         compressed_file = InMemoryUploadedFile(
             img_io,
-            field_name="ImageField",
+            field_name=field_name,
             name=new_name,
             content_type="image/jpeg",
             size=img_io.getbuffer().nbytes,
             charset=None
         )
 
-        setattr(self, self.image_field_name, compressed_file)
+        setattr(self, field_name, compressed_file)
+
+    def compress_images(self):
+        for field_name, config in self.image_compression_config.items():
+            self._compress_image_field(field_name, config)
 
     def save(self, *args, **kwargs):
         super().save(*args, **kwargs)
-        self.compress_image()
-        super().save(update_fields=[self.image_field_name])
+        self.compress_images()
+        super().save(update_fields=list(self.image_compression_config.keys()))
 
 
 class SiteSettings(models.Model):
@@ -141,10 +155,19 @@ class Excursion(
     updated_at = models.DateTimeField("Обновлено", auto_now=True)  # noqa
 
     cover = models.ImageField("Изображение (обложка)", upload_to=upload_to, blank=True, null=True)  # noqa
-    image_field_name = "cover"
-    max_width = 1280
-    max_height = 1280
-    quality = 75
+    cover_head = models.ImageField("Шапка", upload_to=upload_to, blank=True, null=True)  # noqa
+    image_compression_config = {
+        "cover": {
+            "max_width": 1280,
+            "max_height": 1280,
+            "quality": 75
+        },
+        "cover_head": {
+            "max_width": 1280,
+            "max_height": 1280,
+            "quality": 75
+        }
+    }
 
     class Meta:
         verbose_name = "Экскурсия"
@@ -172,10 +195,13 @@ class ExcursionImage(
     sort_order = models.PositiveIntegerField("Порядок", default=0)
 
     image = models.ImageField("Изображение", upload_to=upload_to)
-    image_field_name = "image"
-    max_width = 1280
-    max_height = 1280
-    quality = 75
+    image_compression_config = {
+        "image": {
+            "max_width": 1280,
+            "max_height": 1280,
+            "quality": 75
+        }
+    }
 
     class Meta:
         verbose_name = "Изображение экскурсии"

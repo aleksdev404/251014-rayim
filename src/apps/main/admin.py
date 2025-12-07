@@ -56,18 +56,23 @@ class ExcursionAdmin(admin.ModelAdmin):
     fieldsets = (
         (None, {"fields": ("title", "slug", "is_published")}),
         ("Контент", {"fields": ("short_description", "content_md")}),
-        ("Изображения", {"fields": ("cover", "cover_thumb")}),
+        ("Изображения", {"fields": ("cover", "cover_thumb", "cover_head", "cover_head_thumb")}),  # noqa
     )
     inlines = (ExcursionImageInline,)
     list_display = ("title", "is_published", "created_at", "updated_at", "cover_thumb")  # noqa
     list_filter = ("is_published", "created_at")
     prepopulated_fields = {'slug': ('title',)}
-    readonly_fields = ("cover_thumb",)
+    readonly_fields = ("cover_thumb", "cover_head_thumb")
     search_fields = ("title", "short_description", "content_md")
 
     def cover_thumb(self, obj):
         if obj.cover:
             return format_html('<img src="{}" style="max-height:60px;"/>', obj.cover.url)  # noqa
+        return "—"
+
+    def cover_head_thumb(self, obj):
+        if obj.cover_head:
+            return format_html('<img src="{}" style="max-height:60px;"/>', obj.cover_head.url)  # noqa
         return "—"
 
     cover_thumb.short_description = "Превью"
