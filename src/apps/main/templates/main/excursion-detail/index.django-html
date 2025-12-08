@@ -1,5 +1,7 @@
 {% extends 'base.django-html' %}
 
+{% load utils %}
+
 {% block title %}{{object.title}}{% endblock %}
 
 {% load static %}
@@ -8,7 +10,7 @@
 {% block content %}
 
 {% url 'main:excursion-list' as back_url %}
-{% include 'components/breadcrumb.django-html' with title=object.title back_title='Экскурсии' back_url=back_url image_url=object.cover_head.url %}
+{% include 'components/breadcrumb.django-html' with title=object.title back_title='Экскурсии' back_url=back_url image_url=object.cover_head|safe_url %}
 
 <div class="tour-details-area">
     {% include './content.django-html' with object=object %}

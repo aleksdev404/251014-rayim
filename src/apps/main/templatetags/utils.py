@@ -36,3 +36,11 @@ def index(list_obj, i):
         return list_obj[int(i)]
     finally:
         return ""
+
+
+@register.filter
+def safe_url(field):
+    try:
+        return field.url
+    except Exception:
+        return ""
