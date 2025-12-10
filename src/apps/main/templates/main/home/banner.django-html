@@ -1,13 +1,15 @@
 {% load static %}
 
-<div class="main-banner-area jarallax" style="background-image: url({% static '' %}/img/banner/hero-5.jpeg);">
+<div class="main-banner-area" style="background-image: url({% static '' %}/img/banner/hero-5.jpeg);">
     <div class="content">
         <div class="container">
-            <h2>РУССКОГОВОРЯЩИЙ ГИД в СТАМБУЛЕ</h2>
-            <h1>
-                RAYIM TOUR
-            </h1>
-            <h1 class="shadow">RAYIM TOUR</h1>
+            <div class="main-banner-area__content">
+                <h2 class="main-banner-area__slogan">РУССКОГОВОРЯЩИЙ ГИД в СТАМБУЛЕ</h2>
+                <h1 class="main-banner-area__brand">
+                    RAYIM TOUR
+                </h1>
+            </div>
+            <h1 class="main-banner-area__brand-shadow shadow">RAYIM TOUR</h1>
             <div class="scroll-down">
                 <a href="#main_search" class="text-center">
                     <span></span>
@@ -17,3 +19,77 @@
         </div>
     </div>
 </div>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(".main-banner-area__content",
+        { y: 0 },
+        {
+            y: -1000,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".main-banner-area",
+                start: "top top",
+                end: "bottom top",
+                scrub: .5
+            }
+        },
+    );
+
+    gsap.fromTo(".main-banner-area",
+        {backgroundPositionY: "0"},
+        {
+            backgroundPositionY: "-200px", 
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".main-banner-area",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        }
+    );
+
+    gsap.fromTo(".main-banner-area__brand-shadow",
+        {opacity: 0},
+        {
+            opacity: 2,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".main-banner-area",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        }
+    );
+</script>
+
+
+<style>
+    .main-banner-area
+    {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+
+    .main-banner-area__brand, .main-banner-area__brand-shadow
+    {
+        background: transparent !important;
+        -webkit-text-fill-color: initial !important;
+        margin-bottom: 0;
+    }
+
+    .main-banner-area__brand-shadow
+    {
+        transform: translateY(-100%) !important;
+        -webkit-transform: translateY(-100%) !important;
+        margin-top: 0 !important;
+    }
+
+    h2.main-banner-area__slogan
+    {
+        color: #fbdb5b;
+    }
+</style>

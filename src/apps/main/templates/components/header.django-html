@@ -64,9 +64,17 @@
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Написать в WhatsApp"                    
-                    >📞&nbsp;&nbsp;СВЯЗАТЬСЯ</a>
+                    >ЗАБРОНИРОВАТЬ</a>
                 </li>
             </ul>
         </div>
     </div>
 </nav>
+
+<style>
+    .navbar-area-fixed
+    {
+        background: rgba(255, 255, 255, 0.9);
+        backdrop-filter: blur(.5rem);
+    }
+</style>

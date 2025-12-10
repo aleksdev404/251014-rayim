@@ -1,7 +1,7 @@
 {% load static %}
 
 <div
-    class="breadcrumb-area jarallax"
+    class="breadcrumb-area"
     style="
         background-image: url({% if not image_url %}{% static '' %}/img/banner/hero-2.webp{% else %}{{image_url}}{% endif %});
     "
@@ -24,3 +24,47 @@
         </div>
     </div>
 </div>
+
+<script>
+    gsap.registerPlugin(ScrollTrigger);
+
+    gsap.fromTo(".page-title",
+        { y: 0 },
+        {
+            y: -200,
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".breadcrumb-area",
+                start: "top top",
+                end: "bottom top",
+                scrub: .5
+            }
+        },
+    );
+    gsap.fromTo(".breadcrumb-area",
+        {backgroundPositionY: "0"},
+        {
+            backgroundPositionY: "-200px", 
+            ease: "none",
+            scrollTrigger: {
+                trigger: ".breadcrumb-area",
+                start: "top top",
+                end: "bottom top",
+                scrub: true
+            }
+        }
+    );
+</script>
+
+<style>
+    .page-title
+    {
+        position: relative;
+        will-change: transform;
+    }
+    .breadcrumb-area
+    {
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+    }
+</style>
