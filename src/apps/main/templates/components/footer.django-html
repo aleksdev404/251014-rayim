@@ -12,7 +12,7 @@
         <div class="footer-widget widget">
           <div class="about_us_widget">
             <a href="{% url 'main:home' %}" class="footer-logo">
-              <img src="{% static '' %}/img/logo-new.svg" style="height: 3rem;" alt="footer logo" />
+              <img src="{% static '' %}/img/logo/logo.svg" style="height: 3rem;" alt="footer logo" />
             </a>
             <p>
               РУССКОГОВОРЯЩИЙ ГИД в СТАМБУЛЕ

@@ -1,6 +1,6 @@
 {% load static %}
 
-<div class="main-banner-area" style="background-image: url({% static '' %}/img/banner/hero-5.jpeg);">
+<div class="main-banner-area" style="background-image: url({% static '' %}/img/hero/hero-5.jpeg);">
     <div class="content">
         <div class="container">
             <div class="main-banner-area__content">

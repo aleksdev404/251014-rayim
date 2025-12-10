@@ -3600,7 +3600,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
       z-index: 2; }
       .single-destinations-list .thumb .d-list-tag:after {
         content: '';
-        background-image: url("../img/shape-1.png");
+        background-image: url("../img/others/shape-1.png");
         position: absolute;
         width: 100%;
         background-size: cover;
@@ -3844,7 +3844,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
     display: block;
     -webkit-mask-repeat: no-repeat;
     mask-repeat: no-repeat;
-    -webkit-mask-image: url("../img/asd.png");
+    -webkit-mask-image: url("../img/others/asd.png");
     -webkit-mask-size: 100% 100%;
     mask-size: 100% 100%;
     -webkit-transform: rotate(1.8deg);
@@ -3855,7 +3855,7 @@ ul.wp-block-latest-posts.is-grid.alignwide {
       height: 100%; }
   .video-popup-wrap:after {
     content: '';
-    background-image: url("../img/asd.png");
+    background-image: url("../img/others/asd.png");
     position: absolute;
     width: 99%;
     background-size: cover;

@@ -10,7 +10,7 @@
                     <div class="col-sm-3">
                         <div class="single-blog style-three">
                             <div class="thumb">
-                                <img src="{% static '' %}/img/blog/category-1.jpg" alt="blog">
+                                <img src="{% static '' %}/img/category/category-1.jpg" alt="blog">
                             </div>
                             <div class="single-blog-details-wrap">
                                 <div class="single-blog-details text-center">
@@ -25,7 +25,7 @@
                     <div class="col-sm-3">
                         <div class="single-blog style-three">
                             <div class="thumb">
-                                <img src="{% static '' %}/img/blog/category-2.jpg" alt="blog">
+                                <img src="{% static '' %}/img/category/category-2.jpg" alt="blog">
                             </div>
                             <div class="single-blog-details-wrap">
                                 <div class="single-blog-details text-center">
@@ -40,7 +40,7 @@
                     <div class="col-sm-3">
                         <div class="single-blog style-three">
                             <div class="thumb">
-                                <img src="{% static '' %}/img/blog/category-3.jpg" alt="blog">
+                                <img src="{% static '' %}/img/category/category-3.jpg" alt="blog">
                             </div>
                             <div class="single-blog-details-wrap">
                                 <div class="single-blog-details text-center">
@@ -61,7 +61,7 @@
                     <div class="col-sm-3">
                         <div class="single-blog style-three">
                             <div class="thumb">
-                                <img src="{% static '' %}/img/blog/category-4.webp" alt="blog">
+                                <img src="{% static '' %}/img/category/category-4.webp" alt="blog">
                             </div>
                             <div class="single-blog-details-wrap">
                                 <div class="single-blog-details text-center">

@@ -3,7 +3,7 @@
 <div
     class="breadcrumb-area"
     style="
-        background-image: url({% if not image_url %}{% static '' %}/img/banner/hero-2.webp{% else %}{{image_url}}{% endif %});
+        background-image: url({% if not image_url %}{% static '' %}/img/hero/hero-2.webp{% else %}{{image_url}}{% endif %});
     "
 >
     <div class="container">
