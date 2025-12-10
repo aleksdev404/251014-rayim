@@ -1,12 +1,21 @@
 {% load static %}
+{% load utils %}
+
+{% get_site_settings as site_settings %}
+
+{% if site_settings.banner_image and site_settings.banner_link %}
+
+
 <div class="ads-area pd-top-90">
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-xl-8 col-lg-9">
-                <a class="ads-thumb" href="#">
-                    <img src="{% static '' %}/img/others/1.png" alt="ads">
+                <a class="ads-thumb" href="{{ site_settings.banner_link }}">
+                    <img src="{{ site_settings.banner_image.url }}" alt="ads">
                 </a>
             </div>
         </div>
     </div>
 </div>
+
+{% endif %}

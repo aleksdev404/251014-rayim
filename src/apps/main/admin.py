@@ -10,12 +10,22 @@ class SiteSettingsAdmin(admin.ModelAdmin):
         ("Брендинг", {"fields": ("logo", "logo_preview", "slogan", "copyright_text", "tursab_image", "tursab_preview")}),  # noqa
         ("Контакты", {"fields": (
             "address",
+            "address_gmap",
             "email",
             "phone",
             "phone_repr",
             "whatsapp",
             "whatsapp_repr"
         )}),
+        (
+            "Баннер",
+            {
+                "fields": (
+                    "banner_link",
+                    "banner_image"
+                )
+            }
+        )
     )
     readonly_fields = ("logo_preview", "tursab_preview")
     list_display = ("__str__", "email", "phone", "whatsapp")

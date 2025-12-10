@@ -40,16 +40,16 @@
             <p>
               <i class="fa fa-map-marker"></i>
               <span
-                >Manama Tower, Badda Link Road, Badda Dhaka, Bangladesh</span
+                >{{ site_settings.address }}</span
               >
             </p>
             <p class="location">
-              <i class="fa fa-envelope-o"></i>
-              <span>travelpoint@gmail.com</span>
+              <i class="fa-regular fa-envelope"></i>
+              <span>{{ site_settings.email }}</span>
             </p>
             <p class="telephone">
               <i class="fa fa-phone base-color"></i>
-              <span> +088 012121240 </span>
+              <span>{{ site_settings.phone_repr }}</span>
             </p>
           </div>
         </div>

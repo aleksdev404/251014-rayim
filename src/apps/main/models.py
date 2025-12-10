@@ -86,13 +86,15 @@ class ImageCompressionMixin:
         super().save(update_fields=list(self.image_compression_config.keys()))
 
 
-class SiteSettings(models.Model):
+class SiteSettings(models.Model, ImageCompressionMixin):
+
     logo = models.ImageField("Логотип", upload_to=upload_to, blank=True, null=True)  # noqa
     slogan = models.CharField("Слоган", max_length=255, blank=True)
     copyright_text = models.CharField("Текст копирайт", max_length=255, blank=True)  # noqa
     tursab_image = models.ImageField("Изображение Турсаб", upload_to=upload_to, blank=True, null=True)  # noqa
 
     address = models.CharField("Адрес", max_length=255, blank=True)
+    address_gmap = models.TextField("Ссылка Google-карт", blank=True)
     email = models.EmailField("Почта", blank=True)
 
     phone = models.CharField(
@@ -117,6 +119,22 @@ class SiteSettings(models.Model):
         max_length=50,
         blank=True
     )
+
+    banner_link = models.URLField("Ссылка баннера", blank=True)
+    banner_image = models.ImageField(
+        "Изображение баннера",
+        upload_to=upload_to,
+        blank=True,
+        null=True
+    )
+
+    image_compression_config = {
+        "banner": {
+            "max_width": 1080,
+            "max_height": 520,
+            "quality": 75
+        }
+    }
 
     class Meta:
         verbose_name = "Настройки сайта"
